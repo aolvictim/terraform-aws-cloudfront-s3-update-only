@@ -1,5 +1,5 @@
 # S3
-resource "aws_s3_bucket" "s3_bucket" {
+data "aws_s3_bucket" "s3_bucket" {
   bucket = var.bucket_name
 }
 
@@ -10,7 +10,7 @@ module "template_files" {
 
 resource "aws_s3_object" "object" {
   for_each = module.template_files.files
-  bucket   = aws_s3_bucket.s3_bucket.id
+  bucket   = data.aws_s3_bucket.s3_bucket.id
   key      = "${var.path_prefix}${each.key}"
   content_type = each.value.content_type
   source   = each.value.source_path
