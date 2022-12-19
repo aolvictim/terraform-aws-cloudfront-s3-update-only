@@ -2,6 +2,11 @@ variable "aws_region" {
   description = "AWS Region to deploy to"
 }
 
+variable "aws_profile" {
+  default     = "default"
+  description = "AWS_PROFILE variable to set"
+}
+
 variable "bucket_name" {
   description = "Bucket name"
 }
@@ -10,25 +15,12 @@ variable "files_folder_path" {
   description = "Path to files to be uploaded"
 }
 
-variable "host_name" {
-  description = "Host name ex. <host_name>.xyz.com>"
+variable "path_prefix" {
+  description = "Prefix to path to files to be uploaded"
+  default = ""
 }
 
-variable "domain_name" {
-  description = "Domain Name (Hosted Zone) ex. xyz.com"
-}
-
-variable "acm_cert_arn" {
-  description = "ARN to the wildcard certificate"
-}
-
-variable "default_root_object" {
-  default     = "index.html"
-  description = "Default is index.html"
-}
-
-variable "aws_profile" {
-  default     = "default"
-  description = "AWS_PROFILE variable to set"
+variable "cf_distribution_id" {
+  description = "Cloudfront Distribution ID"
 }
 
